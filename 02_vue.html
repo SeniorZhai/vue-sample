@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js" type="text/javascript"></script>
+</head>
+<body>
+
+</body>
+<script>
+    // 每个Vue.js应用都是构造函数Vue创建
+    // Vue实例在MVVM模式中作为ViewModel的角色
+    var data = {a: 1}
+    var vm = new Vue({
+        // 实例化Vue时,需要传入一个选项对象,它可以包含数据\模板\挂载元素\方法\生命周期等
+        // 每个Vue实例都会代理其data对象
+        data: data,
+        // 生命周期函数 组件创建后调用
+        created: function () {
+            console.log('a is:' + this.a)
+        }
+    })
+    vm.$watch('a', function (newVal, oldVal) {
+        // vm.a改变后会回调
+    })
+    /*
+     *  var MyComponent = Vue.extend({
+     *      // 扩展构造函数
+     *  })
+     */
+</script>
+</html>

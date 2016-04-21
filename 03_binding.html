@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="app">
+    <strong>插值绑定</strong>
+    <p/>
+    <span>Message:{{msg}}</span>
+    <p/>
+    <!--单次插值不会引起插值更新-->
+    <span>This will never change:{{*msg}}</span>
+    <p/>
+
+    <!--原始HTML-->
+    <!--<span>{{{rew_html}}</span>-->
+    <!--<p/>-->
+    <strong>绑定表达式</strong>
+    <span>{{ok?'YES':'NO'}}</span>
+    <span>{{number+1}}</span>
+    <p/>
+    <strong>过滤器</strong>
+    <!--Vue允许表达式后添加可选的过滤器-->
+    <p/>
+    <strong>指令</strong>
+    <p/>
+    <!-- 指令是特殊的带前缀v-的特性-->
+    <!-- 根据表达式是否删除插入元素 -->
+    <span v-if="1+1>0">Hello</span>
+    <!-- 参数 -->
+    <a v-bind:href="url">href</a>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: 1024,
+            ok: true,
+            number: 1023,
+            url: "www.google.com",
+            show: false
+        }
+    })
+</script>
+</html>
