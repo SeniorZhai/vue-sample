@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>conmponents</title>
+    <script src="./vue.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="app">
+    <!--<my-component></my-component>-->
+    <!--<child message="hello!"></child>-->
+    <!--<br>-->
+    <!--<input v-model="parentMsg">-->
+    <!--<br>-->
+    <!--<child v-bind:message="parentMsg"></child>-->
+    <!--<br>-->
+    <!--<view propC='1'></view>-->
+    <child message="1"></child>
+</div>
+
+
+</body>
+<script type="text/javascript">
+
+    Vue.component('child', {
+        // 声明 props
+        props: ['message'],
+        // 就像 data 一样，prop 也可以在模板中使用
+        // 同样也可以在 vm 实例中通过 this.message 来使用
+        template: '<button  v-on:click="incrementCounter">{{ message }}</button>',
+        methods: {
+            incrementCounter: function () {
+                this.message++
+            }
+        }
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            parentMsg: 'Message'
+        }
+    })
+</script>
+</html>

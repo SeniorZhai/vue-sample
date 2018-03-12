@@ -8,18 +8,27 @@
 <body>
 <div id="app">
     a={{a}},
-    b={{b}}
+    b={{b}},
+    c={{c}}
 </div>
 </body>
 <script>
     var vm = new Vue({
         el: "#app",
         data: {
-            a: 1
+            a: 1,
+            c: 1
         },
         computed: {
             b: function () {
                 return this.a + 1
+            }
+        },
+        watch: {
+            a: function (newV, oldV) {
+                console.log(newV)
+                this.a = newV
+                this.c = oldV + newV
             }
         }
     })

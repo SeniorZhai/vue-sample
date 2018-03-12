@@ -12,11 +12,12 @@
     <span>Message:{{msg}}</span>
     <p/>
     <!--单次插值不会引起插值更新-->
-    <span>This will never change:{{*msg}}</span>
+    <span v-once>This will never change:{{msg}}</span>
     <p/>
-
     <!--原始HTML-->
-    <!--<span>{{{rew_html}}</span>-->
+    <span>{{rawHtml}}</span>
+    <p>using v-html : <span v-html="rawHtml"></span></p>
+    <!--b-->
     <!--<p/>-->
     <strong>绑定表达式</strong>
     <span>{{ok?'YES':'NO'}}</span>
@@ -32,6 +33,7 @@
     <span v-if="1+1>0">Hello</span>
     <!-- 参数 -->
     <a v-bind:href="url">href</a>
+
 </div>
 </body>
 <script>
@@ -42,8 +44,12 @@
             ok: true,
             number: 1023,
             url: "www.google.com",
-            show: false
+            show: false,
+            rawHtml: "<span style='color:red'>This should be red</span>"
         }
     })
+    function doSomething(){
+        vm.data.msg = 1018
+    }
 </script>
 </html>

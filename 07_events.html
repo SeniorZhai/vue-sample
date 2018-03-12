@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>events</title>
+    <script src="./vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="counter += 1">
+            Click
+        </button>
+        <p>点击了{{counter}}次</p>
+        <button v-on:click="greet">button</button>
+        <p v-show="show">I'm here</p>
+        <button v-on:click="say('hello')">say hello</button>
+        <button v-on:click="say('hello',$event)">say hello</button>
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            counter:0,
+            show: true
+        },
+        methods:{
+            greet:function(event){
+                this.show = !this.show
+            },
+            say:function(msg,event){
+                if (event){
+                    alert(msg + event.x)
+                }else {
+                    alert(msg)
+                }
+            }
+        }
+    })
+</script>
+</html>

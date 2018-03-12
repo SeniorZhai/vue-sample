@@ -12,20 +12,16 @@
     <input v-model="message">
     <!-- 用户输入 -->
     <button v-on:click="reverseMessage">reverseMessage</button>
-</div>
-<div id="app1">
     <!-- 渲染列表 -->
-    <ul>
-        <li v-for="todo in todos">
-            {{todo.text}}
-        </li>
-    </ul>
-</div>
-<div id="app2">
+    <br/>
+    <span v-bind:title="msg">悬停此处几秒</span>
+    <br/>
+    <br/>
+    <br/>
     <input v-model="newTodo" v-on:keyup.enter="addTodo">
     <ul>
         <li v-for="todo in todos">
-            <span>{{ todo.text }}</span>
+            {{todo.text}}
             <button v-on:click="removeTodo($index)">X</button>
         </li>
     </ul>
@@ -35,33 +31,20 @@
     new Vue({
         el: '#app',
         data: {
-            message: "Hello Vue.js"
-        },
-        methods: {
-            reverseMessage: function () {
-                this.message = this.message.split("").reverse().join("")
-            }
-        }
-    })
-    new Vue({
-        el: "#app1",
-        data: {
+            newTodo: 'Add list item',
+            message: "Hello Vue.js",
+            msg:'页面加载于 ' + new Date().toLocaleString(),
             todos: [
                 {text: 'Learn JavaScript'},
                 {text: 'Learn Vue.js'},
                 {text: 'Build Something Awesome'}
             ]
-        }
-    })
-    new Vue({
-        el: "#app2",
-        data: {
-            newTodo: '',
-            todos: [
-                { text: 'Add some todos' }
-            ]
+
         },
         methods: {
+            reverseMessage: function () {
+                this.message = this.message.split("").reverse().join("")
+            },
             addTodo: function () {
                 var text = this.newTodo.trim()
                 if (text) {
